@@ -55,9 +55,10 @@ jobs:
         with:
           type: 'zip'
           filename: ${{ matrix.platform.asset_name }}
-          path: target/${{ matrix.platform.target }}/release/${{ matrix.platform.artifact_name }}
+          path: ${{ matrix.platform.artifact_name }}
+          directory: target/${{ matrix.platform.target }}/release
       - name: Upload release
         uses: AButler/upload-release-assets@v3.0
         with:
-          files: ${{ matrix.platform.asset_name }}
+          files: target/${{ matrix.platform.target }}/release/${{ matrix.platform.asset_name }}
           repo-token: ${{ secrets.REPO_SCOPED_TOKEN }}
