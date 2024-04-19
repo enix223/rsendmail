@@ -8,6 +8,3 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.5.4", features = ["derive"] }
 lettre = "0.10.0"
-
-[target.x86_64-unknown-linux-musl.dependencies]
-openssl = { version = "*", features = ["vendored"] }
