@@ -50,9 +50,12 @@ jobs:
           args: "--release"
           strip: true
           GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
-      - uses: montudor/action-zip@v1
+      - name: Archive Release
+        uses: thedoctor0/zip-release@0.7.5
         with:
-          args: zip -qq -r ${{ matrix.platform.asset_name }} target/${{ matrix.platform.target }}/release/${{ matrix.platform.artifact_name }}
+          type: 'zip'
+          filename: ${{ matrix.platform.asset_name }}
+          path: target/${{ matrix.platform.target }}/release/${{ matrix.platform.artifact_name }}
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
