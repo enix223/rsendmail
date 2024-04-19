@@ -50,13 +50,14 @@ jobs:
           args: "--release"
           strip: true
           GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
-      - name: Archive Release
+      - name: Archive release
         uses: thedoctor0/zip-release@0.7.5
         with:
           type: 'zip'
           filename: ${{ matrix.platform.asset_name }}
           path: target/${{ matrix.platform.target }}/release/${{ matrix.platform.artifact_name }}
-      - name: Release
-        uses: softprops/action-gh-release@v2
+      - name: Upload release
+        uses: AButler/upload-release-assets@v3.0
         with:
           files: ${{ matrix.platform.asset_name }}
+          repo-token: ${{ secrets.REPO_SCOPED_TOKEN }}
