@@ -30,6 +30,9 @@ struct Args {
 
     #[arg(short = 'b', long, help = "email body")]
     body: String,
+
+    #[arg(short = 'e', long, help = "silent mode")]
+    silent: bool,
 }
 
 fn main() {
@@ -53,6 +56,9 @@ fn main() {
         .build();
 
     let result = sender.send(&email);
+    if args.silent {
+        return;
+    }
     match result {
         Ok(_) => println!("send mail success"),
         Err(e) => println!("failed to send mail: {:?}", e),

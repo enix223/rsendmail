@@ -16,6 +16,7 @@ Options:
   -t, --tls                  use tls or not
   -S, --subject <SUBJECT>    email subject
   -b, --body <BODY>          email body
+  -e, --silent               silent mode
   -h, --help                 Print help
   -V, --version              Print version
 ```
